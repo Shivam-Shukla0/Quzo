@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}QuizMaster{% endblock %}</title>
+    <title>{% block title %}Quzo{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A modern quiz management platform for students and professors">
     
@@ -146,8 +146,12 @@
         .logo-icon {
             width: 32px;
             height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
             position: relative;
-            top: -6px; /* Further upward adjustment */
+            top: -2px;
         }
         @media (max-width: 768px) {
             .logo-text {
@@ -156,6 +160,8 @@
             .logo-icon {
                 width: 28px;
                 height: 28px;
+                margin-right: 10px;
+                top: 0;
             }
         }
     </style>
@@ -169,7 +175,7 @@
                         <path d="M13 15H11V17H13V15Z" fill="currentColor"/>
                     </svg>
                 </div>
-                <span class="logo-text">QuizMaster</span>
+                <span class="logo-text">Quzo</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -230,7 +236,7 @@
 
     <footer class="footer mt-auto py-4">
         <div class="container text-center">
-            <span class="text-white-50"> 2024 QuizMaster. All rights reserved.</span>
+            <span class="text-white-50"> 2024 Quzo. All rights reserved.</span>
         </div>
     </footer>
 
