@@ -28,7 +28,6 @@ pandas==2.1.1
 # Date/Time
 python-dateutil==2.8.2
 
-pandas==2.1.1
 
 # For file uploads and secure filenames
 Werkzeug==2.3.7
