@@ -815,14 +815,31 @@ def test_creator(quiz_id):
 # def check_quiz_update(quiz_id):
 #     user_id = session.get("user_id")
 #     quiz = Quiz.query.get_or_404(quiz_id)
-#     quiz_session = QuizSession.query.filter_by(student_id=user_id, quiz_id=quiz_id).first()
+#     session_obj = QuizSession.query.filter_by(student_id=user_id, quiz_id=quiz_id).first()
 
-#     if not quiz_session or not quiz.last_updated or not quiz_session.quiz_last_updated:
+#     if not session_obj:
 #         return jsonify({'reload': False})
 
-#     # ✅ Check if professor updated quiz after student started
-#     if quiz.last_updated > quiz_session.quiz_last_updated:
-#         return jsonify({'reload': True})
+#     question_changes = []
+#     question_indexes = []  # <-- new
+
+#     if not session_obj.question_last_seen:
+#         session_obj.question_last_seen = {}
+
+#     for idx, q in enumerate(quiz.questions):  # Use enumerate to get index
+#         q_id = str(q.id)
+#         seen_time = session_obj.question_last_seen.get(q_id)
+#         if q.last_updated:
+#             if not seen_time or q.last_updated > datetime.fromisoformat(seen_time):
+#                 question_changes.append(q_id)
+#                 question_indexes.append(idx + 1)  # index starts at 0, so +1
+
+#     if question_changes:
+#         return jsonify({
+#             'reload': True,
+#             'changed_questions': question_changes,
+#             'changed_indexes': question_indexes  # <-- send question numbers
+#         })
 
 #     return jsonify({'reload': False})
 
@@ -837,27 +854,39 @@ def check_quiz_update(quiz_id):
         return jsonify({'reload': False})
 
     question_changes = []
-    question_indexes = []  # <-- new
+    question_indexes = []
 
     if not session_obj.question_last_seen:
         session_obj.question_last_seen = {}
 
-    for idx, q in enumerate(quiz.questions):  # Use enumerate to get index
+    # 🔹 Load student's shuffled order
+    if session_obj.shuffled_question_ids:
+        randomized_order = [int(qid) for qid in session_obj.shuffled_question_ids.split(",") if qid]
+    else:
+        # Fallback to default order if missing
+        randomized_order = [q.id for q in quiz.questions]
+
+    for q in quiz.questions:
         q_id = str(q.id)
         seen_time = session_obj.question_last_seen.get(q_id)
         if q.last_updated:
             if not seen_time or q.last_updated > datetime.fromisoformat(seen_time):
                 question_changes.append(q_id)
-                question_indexes.append(idx + 1)  # index starts at 0, so +1
+
+                # ✅ Get the index in the student's own order
+                if q.id in randomized_order:
+                    question_indexes.append(randomized_order.index(q.id) + 1)
 
     if question_changes:
         return jsonify({
             'reload': True,
             'changed_questions': question_changes,
-            'changed_indexes': question_indexes  # <-- send question numbers
+            'changed_indexes': question_indexes
         })
 
     return jsonify({'reload': False})
+
+
 
 
 @app.route('/quiz/<int:quiz_id>/mark_seen', methods=["POST"])
