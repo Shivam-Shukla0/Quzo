@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Quiz Management System with AI Generator
 
 A comprehensive Flask-based quiz management system featuring an AI-powered quiz generator using Google's Gemini API.
