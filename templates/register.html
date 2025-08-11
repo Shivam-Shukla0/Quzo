@@ -138,7 +138,7 @@
                     <path d="M13 7H11V13H17V11H13V7Z" fill="#4f46e5"/>
                     <path d="M13 15H11V17H13V15Z" fill="#4f46e5"/>
                 </svg>
-                <h2 class="m-0">QuizMaster</h2>
+                <h2 class="m-0">Quzo</h2>
             </div>
             <h4 class="text-muted">Create your account</h4>
         </div>
@@ -156,7 +156,7 @@
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" 
-                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':&quot;\\|,.&lt;&gt;\/?`~]).{8,}$"
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
                        title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character"
                        oninput="validatePassword()" required>
                 <div class="form-text mb-2">
