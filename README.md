@@ -1,7 +1,10 @@
 
 # Quiz Management System with AI Generator
 
+
 A comprehensive Flask-based quiz management system featuring an AI-powered quiz generator using Google's Gemini API.
+🔗 **Live Demo**: [Quiz Management System](https://shloksitare.pythonanywhere.com/home)
+
 
 ## Features
 
@@ -86,6 +89,9 @@ A comprehensive Flask-based quiz management system featuring an AI-powered quiz 
 
 ## Usage
 
+
+
+
 ### For Professors
 1. Register as a professor
 2. Create quizzes manually or use the AI generator
@@ -103,6 +109,8 @@ A comprehensive Flask-based quiz management system featuring an AI-powered quiz 
 3. Select number of questions (5, 10, or 15)
 4. Review generated questions and select which to include
 5. Configure quiz settings and create
+
+Try the application here: [https://shloksitare.pythonanywhere.com/home](https://shloksitare.pythonanywhere.com/home)
 
 ## API Key Management
 
