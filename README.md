@@ -1,5 +1,5 @@
 
-# Quiz Management System with AI Generator
+# Quiz Management System with AI Generator 
 
 
 A comprehensive Flask-based quiz management system featuring an AI-powered quiz generator using Google's Gemini API.
@@ -10,7 +10,7 @@ A comprehensive Flask-based quiz management system featuring an AI-powered quiz 
 ## Features
 
 ### Core Features
-- 👨‍🏫 **Professor Dashboard**: Create, edit, and manage quizzes
+- 👨‍🏫 **Professor Dashboard**: Create, edit, and managing quizzes and 
 - 👨‍🎓 **Student Dashboard**: Take quizzes and view results
 - 📊 **Results & Analytics**: Detailed quiz results and performance tracking
 - 🔐 **User Authentication**: Secure login system with role-based access
